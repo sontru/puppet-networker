@@ -49,8 +49,7 @@ ${shortserver}
 
   service { 'networker':
     ensure  => running,
-    require => Package['lgtoclnt'],
-    require => File['/nsr/res/servers']
+    require => [Package['lgtoclnt'],File['/nsr/res/servers']]
   }
 
   exec { "/usr/bin/nsrports -s ${server} -S ${service_ports}":
