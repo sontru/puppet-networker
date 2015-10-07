@@ -33,7 +33,7 @@ class networker (
   file { '/nsr/res':
     ensure  => 'directory',
     recurse => true,
-    require => '/nsr'
+    require => File['/nsr']
   }
   package { 'lgtoclnt':
     ensure => present
