@@ -28,12 +28,12 @@ class networker (
     ensure  => 'directory',
     recurse => true,
     require => Package['lgtoclnt']
-  } ->
+  }
   file { '/nsr/res':
     ensure  => 'directory',
     recurse => true,
     require => Package['lgtoclnt']
-  } ->
+  }
   package { 'lgtoclnt':
     ensure => present
   }
