@@ -28,12 +28,12 @@ class networker (
     ensure  => 'directory',
     recurse => true,
     require => Package['lgtoclnt']
-  }
+  } ->
   file { '/nsr/res':
     ensure  => 'directory',
     recurse => true,
     require => Package['lgtoclnt']
-  }
+  } ->
   package { 'lgtoclnt':
     ensure => present
   }
@@ -47,8 +47,8 @@ class networker (
   file { '/nsr/res/servers':
     ensure  => file,
     content => "${server}
-    $server.each |String $value| { "${value}
-" },
+    ${server}.each |String $value| "${value}
+",
     require => File['/nsr/res']
   }
 
