@@ -24,7 +24,6 @@ class networker (
 
   $shortserver = inline_template("<%= '${server}'.split('.')[0] %>")
   $serverlist = inline_template("<%=  '${server}'.each |String $value| ${value}\n  %>")
-",
 
   file { '/nsr':
     ensure  => 'directory',
