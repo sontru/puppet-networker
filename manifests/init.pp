@@ -24,13 +24,13 @@ class networker (
 
   $shortserver = inline_template("<%= '${server}'.split('.')[0] %>")
 
-  package { 'lgtoclnt':
-    ensure => present
-  } ->
   file { '/nsr/res':
     ensure  => 'directory',
     recurse => true,
     require => Package['lgtoclnt']
+  } ->
+  package { 'lgtoclnt':
+    ensure => present
   }
 
   file { '/.nsr':
@@ -42,8 +42,8 @@ class networker (
   file { '/nsr/res/servers':
     ensure  => file,
     content => "${server}
-${shortserver}
-",
+    $server.each |String $value| { "${value}
+" },
     require => File['/nsr/res']
   }
 
