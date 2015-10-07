@@ -23,6 +23,8 @@ class networker (
 ) inherits networker::params {
 
   $shortserver = inline_template("<%= '${server}'.split('.')[0] %>")
+  $serverlist = inline_template("<%=  '${server}'.each |String $value| ${value}\n  %>")
+",
 
   file { '/nsr':
     ensure  => 'directory',
@@ -46,9 +48,7 @@ class networker (
 
   file { '/nsr/res/servers':
     ensure  => file,
-    content => "${server}
-    ${server}.each |String $value| "${value}
-",
+    content => "$serverlist",
     require => File['/nsr/res']
   }
 
