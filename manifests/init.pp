@@ -26,6 +26,11 @@ class networker (
 
   package { 'lgtoclnt':
     ensure => present
+  } ->
+  file { '/nsr/res':
+    ensure  => 'directory',
+    recurse => true,
+    require => Package['lgtoclnt']
   }
 
   file { '/.nsr':
@@ -33,11 +38,6 @@ class networker (
     source => 'puppet:///modules/networker/dotnsr',
   }
 
-  file { '/nsr/res':
-    ensure  => 'directory',
-    recurse => true,
-    require => Package['lgtoclnt']
-  }
 
   file { '/nsr/res/servers':
     ensure  => file,
