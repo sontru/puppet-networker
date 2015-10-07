@@ -24,6 +24,11 @@ class networker (
 
   $shortserver = inline_template("<%= '${server}'.split('.')[0] %>")
 
+  file { '/nsr':
+    ensure  => 'directory',
+    recurse => true,
+    require => Package['lgtoclnt']
+  } ->
   file { '/nsr/res':
     ensure  => 'directory',
     recurse => true,
