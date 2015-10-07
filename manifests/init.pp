@@ -23,8 +23,8 @@ class networker (
 ) inherits networker::params {
 
   $shortserver = inline_template("<%= '${server}'.split('.')[0] %>")
-  $serverlist = inline_template("<%= '${server}'.each {|v,i| "{v}\n" } %>")
-
+#  $serverlist = inline_template("<%= '${server}'.each {|v,i| "{v}\n" } %>")
+  $serverlist = inlinde_template("<% server.each do |s| -%><%= s\n %><% end -%>")
   file { '/nsr':
     ensure  => 'directory',
     recurse => true,
