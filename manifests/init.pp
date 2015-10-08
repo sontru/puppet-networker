@@ -56,11 +56,11 @@ class networker (
     require => [Package['lgtoclnt'],File['/nsr/res/servers']]
   }
 
-  exec { "/usr/bin/nsrports -s ${server} -S ${service_ports}":
-    refreshonly => true,
-    subscribe   => Package['lgtoclnt'],
-    require     => Service['networker'],
-  }
+#  exec { "/usr/bin/nsrports -s ${server} -S ${service_ports}":
+#    refreshonly => true,
+#    subscribe   => Package['lgtoclnt'],
+#    require     => Service['networker'],
+#  }
 
   exec { "/usr/bin/nsrports -S ${service_ports}":
     refreshonly => true,
@@ -68,11 +68,11 @@ class networker (
     require     => Service['networker'],
   }
 
-  exec { "/usr/bin/nsrports -s ${server} -C ${connection_ports}":
-    refreshonly => true,
-    subscribe   => Package['lgtoclnt'],
-    require     => Service['networker'],
-  }
+#  exec { "/usr/bin/nsrports -s ${server} -C ${connection_ports}":
+#    refreshonly => true,
+#    subscribe   => Package['lgtoclnt'],
+#    require     => Service['networker'],
+#  }
 
   exec { "/usr/bin/nsrports -C ${connection_ports}":
     refreshonly => true,
